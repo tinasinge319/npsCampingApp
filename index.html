@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>National Parks Campground App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="#">
+        <link href="css/index.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="searchContainer">
+            <h1> National Park Campground Finder</h1>
+            <label for="park-select">Choose a National Park to find an official campground:</label>
+
+            <form id="js-park-form">
+                <select name="park" id="js-search-term" required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="ARCH">Arches National Park, UT</option>
+                    <option value="BADL">Badlands National Park, SD</option>
+                    <option value="BIBE">Big Bend National Park, TX</option>
+                    <option value="BLCA">Black Canyon of The Gunnison National Park, CO</option>
+                    <option value="BRCA">Bryce Canyon National Park, UT</option>
+                    <option value="CANY">Canyon Lands National Park, UT</option>
+                    <option value="CARE">Capitol Reef National Park, UT</option>
+                    <option value="CONG">Congaree National Park, SC</option>
+                    <option value="CRLA">Crater Lake National Park, OR</option>
+                    <option value="DEVA">Death Valley National Park, CA & NV</option>
+                    <option value="DENA">Denali National Park, AK</option>
+                    <option value="DRTO">Dry Tortugas National Park, FL</option>
+                    <option value="EVER">Everglades National Park, FL</option>
+                    <option value="GLAC">Glacier National Park, MT</option>
+                    <option value="GLBA">Glacier Bay National Park, AK</option>
+                    <option value="GRCA">Grand Canyon National Park, AZ</option>
+                    <option value="GRTE">Grand Teton National Park, WY</option>
+                    <option value="GRBA">Great Basin National Park, NV</option>
+                    <option value="GRSA">Great Sand Dunes National Park, CO</option>
+                    <option value="GRSM">Great Smoky Mountains National Park, NC & TN</option>
+                    <option value="HALE">Haleakala National Park, HI</option>
+                    <option value="HAVO">Hawaii Volcanoes National Park, HI</option>
+                    <option value="HOSP">Hot Springs National Park, AR</option>
+                    <option value="INDU">Indiana Dunes National Park, IN</option>
+                    <option value="ISRO">Isle Royale National Park, MI</option>
+                    <option value="JOTR">Joshua Tree National Park, CA</option>
+                    <option value="KATM">Katmai National Park, AK</option>
+                    <option value="KEFJ">Kenai Fjords National Park, AK</option>
+                    <option value="SEKI">Sequoia & Kings Canyon National Park, CA</option>
+                    <option value="KOVA">Kobuk Valley National Park</option>
+                    <option value="LACL">Lake Clark National Park, AK</option>
+                    <option value="LAVO">Lassen Volcanic National Park, CA</option>
+                    <option value="MACA">Mammoth Cave National Park, KY</option>
+                    <option value="MEVE">Mesa Verde National Park, CO</option>
+                    <option value="MORA">Mount Rainier National Park, WA</option>
+                    <option value="NOCA">North Cascades National Park, WA</option>
+                    <option value="OLYM">Olympic National Park, WA</option>
+                    <option value="PEFO">Petrified Forest National Park, AZ</option>
+                    <option value="PINN">Pinnacles National Park, CA</option>
+                    <option value="REDW">Redwood National Park, CA</option>
+                    <option value="ROMO">Rocky Mountain National Park, CO</option>
+                    <option value="SAGU">Saguaro National Park, AZ</option>
+                    <option value="SHEN">Shenandoah National Park, VA</option>
+                    <option value="THRO">Theodore Roosevelt National Park, ND</option>
+                    <option value="WICA">Wind Cave National Park, SD</option>
+                    <option value="WRST">Wrangell-St. Elias National Park, AK</option>
+                    <option value="YELL">Yellowstone National Park, WY</option>
+                    <option value="YOSE">Yosemite National Park, CA</option>
+                    <option value="ZION">Zion National Park, UT</option>
+                </select>
+                <input type="submit" value="Find a campground!">
+            </form>
+            <p>Please note: If the National Park you are looking for is not listed, there are no offical campgrounds located within the park.</p>
+            <p id="js-error-message" class="error-message"></p>
+            <section id="results" class="hidden">
+                <h2>Search results</h2>
+                <ul id="results-list"></ul>
+            </section>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
