@@ -1,7 +1,51 @@
 'use strict';
 
 const apiKey = 'MPaK6hnYjha3d0jrxnuysoAbLIc74tpN0F8slEZG';
-const searchURL = 'https://developer.nps.gov/api/v1/campgrounds';
+const campgroundsURL = 'https://developer.nps.gov/api/v1/campgrounds';
+const parksURL = 'https://developer.nps.gov/api/v1/parks';
+
+function formatParkQueryParams(parkParams) {
+    const parkQueryItems = Object.keys(parkParams)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(parkParams[key])}`)
+    return parkQueryItems.join('&');
+}
+
+function displayDropDown(responseJson) {
+    console.log(responseJson);
+
+    for (let i = 0; i < responseJson.data.length; i++) {
+        $('#js-search-term').append(
+            `<option value="${responseJson.data[i].parkCode}">${responseJson.data[i].fullName}</option>`
+    )};
+}
+
+function getNpsParks(query) {
+    const parkParams = {
+        parkCode: query,
+        api_key: apiKey,
+    };
+
+    const parkQueryString = formatParkQueryParams(parkParams);
+    const npsParksUrl = parksURL + '?' + parkQueryString;
+    
+    console.log(npsParksUrl);
+
+    fetch(npsParksUrl)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } throw new Error(response.statusText);
+        })
+        .then(responseJson => displayDropDown(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Somehing went wrong: ${err.message}`);
+        });
+}
+
+function watchDropDown() {
+        const parkSearchTerm = $('#js-search-term').val();
+        getNpsParks(parkSearchTerm);
+}
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
@@ -18,20 +62,21 @@ function displayResults(responseJson) {
             `<li>
             <h4>${responseJson.data[i].name}</h4>
             <p>${responseJson.data[i].description}</p>
-            <p>Total sites: ${responseJson.data[i].campsites.totalSites}</p>
-            <p>Tent-only sites: ${responseJson.data[i].campsites.tentOnly}</p>
-            <p>RV-only sites: ${responseJson.data[i].campsites.rvOnly}</p>
+            <p>Total sites: ${responseJson.data[i].campsites.totalsites}</p>
+            <p>Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
+            <p>RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
             <p>Group sites: ${responseJson.data[i].campsites.group}</p>
-            <p>RV info: ${responseJson.data[i].accessibility.rvInfo}</p>
-            <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairAccess}</p>
+            <p>RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
+            <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
             <p>Toilets: ${responseJson.data[i].amenities.toilets}</p>
             <p>Showers: ${responseJson.data[i].amenities.showers}</p>
-            <p>Potable water: ${responseJson.data[i].amenities.potableWater}</p>
-            <p>Dump station: ${responseJson.data[i].amenities.dumpStation}</p>
-            <p>Electrical hookups: ${responseJson.data[i].campsites.electricalHookups}</p>
-            <p>Wifi: ${responseJson.data[i].amenities.internetConnectivity}</p>
-            <p>Directions: ${responseJson.data[i].directionsOverview}</p>
-            <p>Directions URL: ${responseJson.data[i].directionsURL}</p>
+            <p>Potable water: ${responseJson.data[i].amenities.potablewater}</p>
+            <p>Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
+            <p>Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
+            <p>Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
+            <p>Directions: ${responseJson.data[i].directionsoverview}</p>
+            <p>Directions URL: ${responseJson.data[i].reservationsurl}</p>
+            <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
             </li>`
         )};
 
@@ -45,7 +90,7 @@ function getNpsCampgrounds(query) {
     };
 
     const queryString = formatQueryParams(params);
-    const url = searchURL + '?' + queryString;
+    const url = campgroundsURL + '?' + queryString;
 
     console.log(url);
 
@@ -69,4 +114,5 @@ function watchForm() {
     });
 }
 
+$(watchDropDown);
 $(watchForm);
