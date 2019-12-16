@@ -13,11 +13,12 @@ function formatParkQueryParams(parkParams) {
 function displayDropDown(responseJson) {
     console.log(responseJson);
 
-    for (let i = 0; i < responseJson.data.length; i++) {
-        $('#js-search-term').append(
-            `<option value='${responseJson.data[i].parkCode}'>${responseJson.data[i].fullName}</option>`
-    )};
-}
+    for (let i = 0; i < responseJson.data.length; i++) {
+        $('#js-search-term').append($('<option>',{
+            value: responseJson.data[i].parkCode,
+            text: responseJson.data[i].name
+        }))
+    };
 
 function getNpsParks(query) {
     const parkParams = {
