@@ -15,13 +15,12 @@ function displayDropDown(responseJson) {
 
     for (let i = 0; i < responseJson.data.length; i++) {
         $('#js-search-term').append(
-            `<option value="${responseJson.data[i].parkCode}">${responseJson.data[i].fullName}</option>`
+            `<option value='${responseJson.data[i].parkCode}'>${responseJson.data[i].fullname}</option>`
     )};
 }
 
 function getNpsParks(query) {
     const parkParams = {
-        parkCode: query,
         api_key: apiKey,
     };
 
