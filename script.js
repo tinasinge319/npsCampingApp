@@ -23,6 +23,7 @@ function displayDropDown(responseJson) {
 
 function getNpsParks(query) {
     const parkParams = {
+        limit: 450,
         api_key: apiKey,
     };
 
@@ -64,19 +65,23 @@ function displayResults(responseJson) {
             <h4>${responseJson.data[i].name}</h4>
             <p>${responseJson.data[i].description}</p>
             <p>Total sites: ${responseJson.data[i].campsites.totalsites}</p>
+            <p>Group sites: ${responseJson.data[i].campsites.group}</p>
             <p>Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
             <p>RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
-            <p>Group sites: ${responseJson.data[i].campsites.group}</p>
             <p>RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
-            <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
+            <p>RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
             <p>Toilets: ${responseJson.data[i].amenities.toilets}</p>
             <p>Showers: ${responseJson.data[i].amenities.showers}</p>
             <p>Potable water: ${responseJson.data[i].amenities.potablewater}</p>
             <p>Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
             <p>Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
             <p>Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
+            <p>Firewood for sale: ${responseJson.data[i].firewoodforsale}</p>
+            <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
             <p>Directions: ${responseJson.data[i].directionsoverview}</p>
-            <p>Directions URL: ${responseJson.data[i].reservationsurl}</p>
+            <p>Weather: ${responseJson.data[i].weatheroverview}</p>
+            <p>Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
+            <p>Regulations: ${responseJson.data[i].regulationsoverview}</p>
             <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
             </li>`
         )};
