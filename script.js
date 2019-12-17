@@ -55,13 +55,13 @@ const STORE = [
     {parkCode: 'ZION', text: 'Zion National Park, UT'}
 ];
 
-function displayDropDown(STORE) {
-    console.log(responseJson);
-
-    for (let i = 0; i < STORE.length; i++) {
-        $('#js-search-term').append($('<option>',{
-            value: STORE.length[i].parkCode,
-            text: STORE.length[i].text
+function displayDropDown(store) {
+    for (let i = 0; i < store.length; i++) {
+        console.log(store[i].parkCode);
+        console.log(store[i].text);
+       $('#js-search-term').append($('<option>',{
+           value: store[i].parkCode,
+           text: store[i].text
         }))
     };
 }
@@ -136,5 +136,7 @@ function watchForm() {
         getNpsCampgrounds(searchTerm);
     });
 }
+
+displayDropDown(STORE);
 
 $(watchForm);
