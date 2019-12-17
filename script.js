@@ -8,23 +8,30 @@ const STORE = [
     {parkCode: 'ARCH', text: 'Arches National Park, UT'},
     {parkCode: 'BADL', text: 'Badlands National Park, SD'},
     {parkCode: 'BIBE', text: 'Big Bend National Park, TX'},
+    {parkCode: 'BISC', text: 'Biscayne National Park, FL'},
     {parkCode: 'BLCA', text: 'Black Canyon of The Gunnison National Park, CO'},
     {parkCode: 'BRCA', text: 'Bryce Canyon National Park, UT'},
     {parkCode: 'CANY', text: 'Canyon Lands National Park, UT'},
     {parkCode: 'CARE', text: 'Capitol Reef National Park, UT'},
+    {parkCode: 'CAVE', text: 'Carlsbad Caverns National Park, NM'},
+    {parkCode: 'CHIS', text: 'Channel Islands National Park, CA'},
     {parkCode: 'CONG', text: 'Congaree National Park, SC'},
     {parkCode: 'CRLA', text: 'Crater Lake National Park, OR'},
+    {parkCode: 'CUVA', text: 'Cuyahoga Valley National Park, OH'},
     {parkCode: 'DEVA', text: 'Death Valley National Park, CA & NV'},
     {parkCode: 'DENA', text: 'Denali National Park, AK'},
     {parkCode: 'DRTO', text: 'Dry Tortugas National Park, FL'},
     {parkCode: 'EVER', text: 'Everglades National Park, FL'},
+    {parkCode: 'GAAR', text: 'Gates of The Arctic National Park, AK'},
+    {parkCode: 'JEFF', text: 'Gateway Arch National Park, MO'},
     {parkCode: 'GLAC', text: 'Glacier National Park, MT'},
     {parkCode: 'GLBA', text: 'Glacier Bay National Park, AK'},
     {parkCode: 'GRCA', text: 'Grand Canyon National Park, AZ'},
     {parkCode: 'GRTE', text: 'Grand Teton National Park, WY'},
-    {parkCode: 'GRBA', text: 'Grand Basin National Park, NV'},
+    {parkCode: 'GRBA', text: 'Great Basin National Park, NV'},
     {parkCode: 'GRSA', text: 'Great Sand Dunes National Park, CO'},
     {parkCode: 'GRSM', text: 'Great Smoky Mountains National Park, NC & TN'},
+    {parkCode: 'GUMO', text: 'Guadalupe Mountains National Park, TX'},
     {parkCode: 'HALE', text: 'Haleakala National Park, HI'},
     {parkCode: 'HAVO', text: 'Hawaii Volcanoes National Park'},
     {parkCode: 'HOSP', text: 'Hot Springs National Park, AR'},
@@ -33,13 +40,13 @@ const STORE = [
     {parkCode: 'JOTR', text: 'Joshua Tree National Park, CA'},
     {parkCode: 'KATM', text: 'Katmai National Park, AK'},
     {parkCode: 'KEFJ', text: 'Kenai Fjords National Park, AK'},
-    {parkCode: 'SEKI', text: 'Sequoia & Kings Canyon National Park, CA'},
     {parkCode: 'KOVA', text: 'Kobuk Valley National Park, AK'},
     {parkCode: 'LACL', text: 'Lake Clark National Park, AK'},
     {parkCode: 'LAVO', text: 'Lassen Volcanic National Park, CA'},
     {parkCode: 'MACA', text: 'Mammoth Cave National Park, KY'},
     {parkCode: 'MEVE', text: 'Mesa Verde National Park, CO'},
     {parkCode: 'MORA', text: 'Mount Rainer National Park, WA'},
+    {parkCode: 'NPSA', text: 'National Park of American Samoa, American Samoa'},
     {parkCode: 'NOCA', text: 'North Cascades National Park, WA'},
     {parkCode: 'OLYM', text: 'Olympic National Park, WA'},
     {parkCode: 'PEFO', text: 'Petrified Forest National Park, AZ'},
@@ -47,8 +54,11 @@ const STORE = [
     {parkCode: 'REDW', text: 'Redwood National Park, CA'},
     {parkCode: 'ROMO', text: 'Rocky Mountain National Park, CO'},
     {parkCode: 'SAGU', text: 'Saguaro National Park, AZ'},
+    {parkCode: 'SEKI', text: 'Sequoia & Kings Canyon National Park, CA'},
     {parkCode: 'SHEN', text: 'Shenandoah National Park, VA'},
     {parkCode: 'THRO', text: 'Theodore Roosevelt National Park, ND'},
+    {parkCode: 'VIIS', text: 'Virgin Islands National Park, Virgin Islands'},
+    {parkCode: 'VOYA', text: 'Voyageurs National Park, MN'},
     {parkCode: 'WICA', text: 'Wind Cave National Park, SD'},
     {parkCode: 'WRST', text: 'Wrangell-St. Elias National Park, AK'},
     {parkCode: 'YELL', text: 'Yellowstone National Park, WY'},
@@ -77,6 +87,10 @@ function displayResults(responseJson) {
     console.log(responseJson);
     $('#results-list').empty();
 
+    if (responseJson.data.length == 0) {
+        alert('Sorry! There is no campground information for that selection at this time. Please choose a different park.');
+    };
+
     for (let i = 0; i < responseJson.data.length; i++) {
         $('#results-list').append(
             `<li>
@@ -101,12 +115,8 @@ function displayResults(responseJson) {
             <p>Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
             <p>Regulations: ${responseJson.data[i].regulationsoverview}</p>
             <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
-            </li>`)
-
-            if (responseJson.data[i].campsites.totalsites == 0) {
-                return('Sorry! There is no info at this time');
-            };
-        };
+            </li>`
+        )};
 
         $('#results').removeClass('hidden');
 }
