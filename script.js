@@ -4,6 +4,7 @@ const apiKey = 'MPaK6hnYjha3d0jrxnuysoAbLIc74tpN0F8slEZG';
 const campgroundsURL = 'https://developer.nps.gov/api/v1/campgrounds';
 
 const STORE = [
+    {parkCode: 'ACAD', text: 'Acadia National Park, ME'},
     {parkCode: 'ARCH', text: 'Arches National Park, UT'},
     {parkCode: 'BADL', text: 'Badlands National Park, SD'},
     {parkCode: 'BIBE', text: 'Big Bend National Park, TX'},
@@ -93,15 +94,19 @@ function displayResults(responseJson) {
             <p>Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
             <p>Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
             <p>Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
-            <p>Firewood for sale: ${responseJson.data[i].firewoodforsale}</p>
+            <p>Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
             <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
             <p>Directions: ${responseJson.data[i].directionsoverview}</p>
             <p>Weather: ${responseJson.data[i].weatheroverview}</p>
             <p>Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
             <p>Regulations: ${responseJson.data[i].regulationsoverview}</p>
             <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
-            </li>`
-        )};
+            </li>`)
+
+            if (responseJson.data[i].campsites.totalsites == 0) {
+                return('Sorry! There is no info at this time');
+            };
+        };
 
         $('#results').removeClass('hidden');
 }
@@ -109,6 +114,7 @@ function displayResults(responseJson) {
 function getNpsCampgrounds(query) {
     const params = {
         parkCode: query,
+        limit: 100,
         api_key: apiKey,
     };
 
