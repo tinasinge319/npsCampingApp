@@ -2,51 +2,68 @@
 
 const apiKey = 'MPaK6hnYjha3d0jrxnuysoAbLIc74tpN0F8slEZG';
 const campgroundsURL = 'https://developer.nps.gov/api/v1/campgrounds';
-const parksURL = 'https://developer.nps.gov/api/v1/parks';
 
-function formatParkQueryParams(parkParams) {
-    const parkQueryItems = Object.keys(parkParams)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(parkParams[key])}`)
-    return parkQueryItems.join('&');
-}
+const STORE = [
+    {parkCode: 'ARCH', text: 'Arches National Park, UT'},
+    {parkCode: 'BADL', text: 'Badlands National Park, SD'},
+    {parkCode: 'BIBE', text: 'Big Bend National Park, TX'},
+    {parkCode: 'BLCA', text: 'Black Canyon of The Gunnison National Park, CO'},
+    {parkCode: 'BRCA', text: 'Bryce Canyon National Park, UT'},
+    {parkCode: 'CANY', text: 'Canyon Lands National Park, UT'},
+    {parkCode: 'CARE', text: 'Capitol Reef National Park, UT'},
+    {parkCode: 'CONG', text: 'Congaree National Park, SC'},
+    {parkCode: 'CRLA', text: 'Crater Lake National Park, OR'},
+    {parkCode: 'DEVA', text: 'Death Valley National Park, CA & NV'},
+    {parkCode: 'DENA', text: 'Denali National Park, AK'},
+    {parkCode: 'DRTO', text: 'Dry Tortugas National Park, FL'},
+    {parkCode: 'EVER', text: 'Everglades National Park, FL'},
+    {parkCode: 'GLAC', text: 'Glacier National Park, MT'},
+    {parkCode: 'GLBA', text: 'Glacier Bay National Park, AK'},
+    {parkCode: 'GRCA', text: 'Grand Canyon National Park, AZ'},
+    {parkCode: 'GRTE', text: 'Grand Teton National Park, WY'},
+    {parkCode: 'GRBA', text: 'Grand Basin National Park, NV'},
+    {parkCode: 'GRSA', text: 'Great Sand Dunes National Park, CO'},
+    {parkCode: 'GRSM', text: 'Great Smoky Mountains National Park, NC & TN'},
+    {parkCode: 'HALE', text: 'Haleakala National Park, HI'},
+    {parkCode: 'HAVO', text: 'Hawaii Volcanoes National Park'},
+    {parkCode: 'HOSP', text: 'Hot Springs National Park, AR'},
+    {parkCode: 'INDU', text: 'Indiana Dunes National Park, IN'},
+    {parkCode: 'ISRO', text: 'Isle Royale National Park, MI'},
+    {parkCode: 'JOTR', text: 'Joshua Tree National Park, CA'},
+    {parkCode: 'KATM', text: 'Katmai National Park, AK'},
+    {parkCode: 'KEFJ', text: 'Kenai Fjords National Park, AK'},
+    {parkCode: 'SEKI', text: 'Sequoia & Kings Canyon National Park, CA'},
+    {parkCode: 'KOVA', text: 'Kobuk Valley National Park, AK'},
+    {parkCode: 'LACL', text: 'Lake Clark National Park, AK'},
+    {parkCode: 'LAVO', text: 'Lassen Volcanic National Park, CA'},
+    {parkCode: 'MACA', text: 'Mammoth Cave National Park, KY'},
+    {parkCode: 'MEVE', text: 'Mesa Verde National Park, CO'},
+    {parkCode: 'MORA', text: 'Mount Rainer National Park, WA'},
+    {parkCode: 'NOCA', text: 'North Cascades National Park, WA'},
+    {parkCode: 'OLYM', text: 'Olympic National Park, WA'},
+    {parkCode: 'PEFO', text: 'Petrified Forest National Park, AZ'},
+    {parkCode: 'PINN', text: 'Pinnacles National Park, CA'},
+    {parkCode: 'REDW', text: 'Redwood National Park, CA'},
+    {parkCode: 'ROMO', text: 'Rocky Mountain National Park, CO'},
+    {parkCode: 'SAGU', text: 'Saguaro National Park, AZ'},
+    {parkCode: 'SHEN', text: 'Shenandoah National Park, VA'},
+    {parkCode: 'THRO', text: 'Theodore Roosevelt National Park, ND'},
+    {parkCode: 'WICA', text: 'Wind Cave National Park, SD'},
+    {parkCode: 'WRST', text: 'Wrangell-St. Elias National Park, AK'},
+    {parkCode: 'YELL', text: 'Yellowstone National Park, WY'},
+    {parkCode: 'YOSE', text: 'Yosemite National Park, CA'},
+    {parkCode: 'ZION', text: 'Zion National Park, UT'}
+];
 
-function displayDropDown(responseJson) {
+function displayDropDown(STORE) {
     console.log(responseJson);
 
-    for (let i = 0; i < responseJson.data.length; i++) {
+    for (let i = 0; i < STORE.length; i++) {
         $('#js-search-term').append($('<option>',{
-            value: responseJson.data[i].parkCode,
-            text: responseJson.data[i].fullName
+            value: STORE.length[i].parkCode,
+            text: STORE.length[i].text
         }))
     };
-}
-
-function getNpsParks(query) {
-    const parkParams = {
-        limit: 450,
-        api_key: apiKey,
-    };
-
-    const parkQueryString = formatParkQueryParams(parkParams);
-    const npsParksUrl = parksURL + '?' + parkQueryString;
-    
-    console.log(npsParksUrl);
-
-    fetch(npsParksUrl)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } throw new Error(response.statusText);
-        })
-        .then(responseJson => displayDropDown(responseJson))
-        .catch(err => {
-            $('#js-error-message').text(`Somehing went wrong: ${err.message}`);
-        });
-}
-
-function watchDropDown() {
-        const parkSearchTerm = $('#js-search-term').val();
-        getNpsParks(parkSearchTerm);
 }
 
 function formatQueryParams(params) {
@@ -120,5 +137,4 @@ function watchForm() {
     });
 }
 
-$(watchDropDown);
 $(watchForm);
