@@ -9,9 +9,12 @@
         <link href="index.css" rel="stylesheet">
     </head>
     <body>
+        <div class="spinner-wrapper">
+             <div class="spinner"></div>
+        </div>
         <div class="searchContainer">
-            <h1> National Park Campground Finder</h1>
-            <label for="park-select">Choose a National Park to find an official campground:</label>
+            <h1> Let's go camping.</h1>
+            <label for="park-select">Find yourself the perfect campground in the National Park you have always dreamed of.</label>
 
             <form id="js-park-form">
                 <select name="park" id="js-search-term" required>
@@ -21,12 +24,43 @@
             </form>
             <p>Please note: If the National Park you are looking for is not listed or no information about camping appears, there is not enough information available from the National Park Service.</p>
             <p id="js-error-message" class="error-message"></p>
+            <section id="filters" class="hidden">
+                <label class="filterOption">Showers
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="filterOption">Toilets
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="filterOption">Potable Water
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="filterOption">Electrical hookups
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                </label>
+                <label class="filterOption">Dump station
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                </label>
+            </section>
             <section id="results" class="hidden">
-                <h2>Search results</h2>
                 <ul id="results-list"></ul>
             </section>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="script.js"></script>
+        <script>
+                $(document).ready(function() {
+                preloaderFadeOutTime = 500;
+                function hidePreloader() {
+                var preloader = $('.spinner-wrapper');
+                preloader.fadeOut(preloaderFadeOutTime);
+                }
+                hidePreloader();
+                });
+                </script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 'use strict';
 
-const apiKey = 'MPaK6hnYjha3d0jrxnuysoAbLIc74tpN0F8slEZG';
+const apiKey = '8cjuTR9nivhxTS9PiKKUfZUVijPHRvjC8ZdSaCGd';
 const campgroundsURL = 'https://developer.nps.gov/api/v1/campgrounds';
 
 const STORE = [
@@ -88,37 +88,60 @@ function displayResults(responseJson) {
     $('#results-list').empty();
 
     if (responseJson.data.length == 0) {
-        alert('Sorry! There is no campground information for that selection at this time. Please choose a different park.');
+        alert('Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.');
+        $('#results-list').append(
+            `<h2>Search Results: (${responseJson.data.length})</h2>`);
+            $('#results').removeClass('hidden');
     };
 
-    for (let i = 0; i < responseJson.data.length; i++) {
+    if (responseJson.data.length >= 1) {
+        $('#filters').removeClass('hidden');
         $('#results-list').append(
-            `<li>
-            <h4>${responseJson.data[i].name}</h4>
-            <p>${responseJson.data[i].description}</p>
-            <p>Total sites: ${responseJson.data[i].campsites.totalsites}</p>
-            <p>Group sites: ${responseJson.data[i].campsites.group}</p>
-            <p>Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
-            <p>RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
-            <p>RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
-            <p>RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
-            <p>Toilets: ${responseJson.data[i].amenities.toilets}</p>
-            <p>Showers: ${responseJson.data[i].amenities.showers}</p>
-            <p>Potable water: ${responseJson.data[i].amenities.potablewater}</p>
-            <p>Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
-            <p>Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
-            <p>Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
-            <p>Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
-            <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
-            <p>Directions: ${responseJson.data[i].directionsoverview}</p>
-            <p>Weather: ${responseJson.data[i].weatheroverview}</p>
-            <p>Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
-            <p>Regulations: ${responseJson.data[i].regulationsoverview}</p>
-            <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
-            </li>`
-        )};
+            `<h2>Search Results: (${responseJson.data.length})</h2>`)
+    
+        for (let i = 0; i < responseJson.data.length; i++) {
+            $('#results-list').append(
+                `<li>
+                <h4>${responseJson.data[i].name}</h4>
+                <p>${responseJson.data[i].description}</p>
+                <p>Total sites: ${responseJson.data[i].campsites.totalsites}</p>
+                <p>Group sites: ${responseJson.data[i].campsites.group}</p>
+                <p>Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
+                <p>RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
+                <p>RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
+                <p>RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
+                <p>Toilets: ${responseJson.data[i].amenities.toilets}</p>
+                <p>Showers: ${responseJson.data[i].amenities.showers}</p>
+                <p>Potable water: ${responseJson.data[i].amenities.potablewater}</p>
+                <p>Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
+                <p>Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
+                <p>Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
+                <p>Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
+                <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
+                <p>Directions: ${responseJson.data[i].directionsoverview}</p>
+                <p>Weather: ${responseJson.data[i].weatheroverview}</p>
+                <p>Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
+                <p>Regulations: ${responseJson.data[i].regulationsoverview}</p>
+                <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
+                </li>`
+            )};
+    
+            $('#results').removeClass('hidden');
+    }
 
-        $('#results').removeClass('hidden');
+    $('.filterOption').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        const resultData = displayResults();
+            
+        let filterResult = true;
+        if (responseJson.data[i].amenities.showers === yes) {
+            let filterResult = false;
+        };
+        if (filterResult) {
+            displayResults(responseJson); 
+        };   
+    })
+        
 }
 
 function getNpsCampgrounds(query) {
@@ -141,7 +164,7 @@ function getNpsCampgrounds(query) {
         })
         .then(responseJson => displayResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Somehing went wrong: ${err.message}`);
+            $('#js-error-message').text(`Something went wrong. Please try again later.`);
         });
 }
 
