@@ -130,8 +130,8 @@ function displayResults(responseJson) {
     }     
 }
 
-function handleFilters() {
-    $('.filterOption').on('click', event => {
+function handleFilters(responseJson) {
+    $('.filterOptionShowers').on('click', event => {
         console.log('`handleFiltersChecked` ran');
         const resultData = displayResults(responseJson);
         
@@ -140,7 +140,7 @@ function handleFilters() {
             let filterResult = false;
         };
         if (filterResult) {
-            displayResults(responseJson.filter(i => i.amenities.showers === yes)); 
+            displayResults(responseJson.data.filter(i => i.amenities.showers === yes)); 
         };   
     })
 }
