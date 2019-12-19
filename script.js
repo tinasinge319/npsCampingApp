@@ -127,21 +127,22 @@ function displayResults(responseJson) {
             )};
     
             $('#results').removeClass('hidden');
-    }
+    }     
+}
 
+function handleFilters() {
     $('.filterOption').on('click', event => {
         console.log('`handleFiltersChecked` ran');
-        const resultData = displayResults();
-            
+        const resultData = displayResults(responseJson);
+        
         let filterResult = true;
-        if (responseJson.data[i].amenities.showers === yes) {
+        if (responseJson.data[i].amenities.showers === no) {
             let filterResult = false;
         };
         if (filterResult) {
-            displayResults(responseJson); 
+            displayResults(responseJson.filter(i => i.amenities.showers === yes)); 
         };   
     })
-        
 }
 
 function getNpsCampgrounds(query) {
@@ -163,6 +164,7 @@ function getNpsCampgrounds(query) {
             } throw new Error(response.statusText);
         })
         .then(responseJson => displayResults(responseJson))
+        .then(handleFilters())
         .catch(err => {
             $('#js-error-message').text(`Something went wrong. Please try again later.`);
         });
