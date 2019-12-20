@@ -164,7 +164,7 @@ function getNpsCampgrounds(query) {
             } throw new Error(response.statusText);
         })
         .then(responseJson => displayResults(responseJson))
-        .then(handleFilters())
+        .then(responseJson => handleFilters(responseJson))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong. Please try again later.`);
         });
