@@ -66,6 +66,8 @@ const STORE = [
     {parkCode: 'ZION', text: 'Zion National Park, UT'}
 ];
 
+let APIdata;
+
 function displayDropDown(store) {
     for (let i = 0; i < store.length; i++) {
         console.log(store[i].parkCode);
@@ -87,10 +89,13 @@ function displayResults(responseJson) {
     console.log(responseJson);
     $('#results-list').empty();
 
+    handleFilters();
+    let APIdata = responseJson;
+
     if (responseJson.data.length == 0) {
-        alert('Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.');
         $('#results-list').append(
-            `<h2>Search Results: (${responseJson.data.length})</h2>`);
+            `<h2>Search Results: (${responseJson.data.length})</h2>
+            <p>Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.</p>`);
             $('#results').removeClass('hidden');
     };
 
@@ -131,18 +136,15 @@ function displayResults(responseJson) {
 }
 
 function handleFilters(responseJson) {
-    $('.filterOptionShowers').on('click', event => {
-        console.log('`handleFiltersChecked` ran');
-        const resultData = displayResults(responseJson);
-        
-        let filterResult = true;
-        if (responseJson.data[i].amenities.showers === no) {
-            let filterResult = false;
-        };
-        if (filterResult) {
-            displayResults(responseJson.data.filter(i => i.amenities.showers === yes)); 
-        };   
-    })
+     $('.filterOptionShowers').on('click', event => {
+         console.log('`handleFiltersChecked` ran');
+         let filterDataClone = APIdata;
+         let filteredData= APIdata.data.filter(obj) => {
+            return obj.amenities.showers.length
+         }
+         filterDataClone.data = filteredData;
+         displayResults(filterDataClone);
+     })
 }
 
 function getNpsCampgrounds(query) {
@@ -164,7 +166,6 @@ function getNpsCampgrounds(query) {
             } throw new Error(response.statusText);
         })
         .then(responseJson => displayResults(responseJson))
-        .then(responseJson => handleFilters(responseJson))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong. Please try again later.`);
         });
