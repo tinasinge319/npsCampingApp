@@ -140,10 +140,60 @@ function handleFilters(responseJson) {
          console.log('`handleFiltersChecked` ran');
          let filterDataClone = APIdata;
          let filteredData = APIdata.data.filter((obj) => {
-            return obj.amenities.showers.length
+            return obj.amenities.showers[0] != 'None'
          })
          filterDataClone.data = filteredData;
          displayResults(filterDataClone);
+     })
+
+     $('.filterOptionToilets').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        let filterDataClone = APIdata;
+        let filteredData = APIdata.data.filter((obj) => {
+           return obj.amenities.toilets[0] == 'Flush', 'Vault', 'Composting', 'Portable'
+        })
+        filterDataClone.data = filteredData;
+        displayResults(filterDataClone);
+     })
+
+     $('.filterOptionWater').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        let filterDataClone = APIdata;
+        let filteredData = APIdata.data.filter((obj) => {
+           return obj.amenities.potablewater[0] == true
+        })
+        filterDataClone.data = filteredData;
+        displayResults(filterDataClone);
+     })
+
+     $('.filterOptionElectrical').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        let filterDataClone = APIdata;
+        let filteredData = APIdata.data.filter((obj) => {
+           return obj.campsites.electricalhookups[0] >= 1
+        })
+        filterDataClone.data = filteredData;
+        displayResults(filterDataClone);
+     })
+
+     $('.filterOptionDump').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        let filterDataClone = APIdata;
+        let filteredData = APIdata.data.filter((obj) => {
+           return obj.amenities.dumpstation[0] == true
+        })
+        filterDataClone.data = filteredData;
+        displayResults(filterDataClone);
+     })
+
+     $('.filterOptionWiFi').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        let filterDataClone = APIdata;
+        let filteredData = APIdata.data.filter((obj) => {
+           return obj.amenities.internetconnectivity[0] == true
+        })
+        filterDataClone.data = filteredData;
+        displayResults(filterDataClone);
      })
 }
 
