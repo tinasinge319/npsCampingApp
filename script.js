@@ -90,7 +90,6 @@ function displayResults(responseJson) {
     $('#results-list').empty();
 
     handleFilters();
-    APIdata = responseJson;
 
     if (responseJson.data.length == 0) {
         $('#results-list').append(
@@ -136,69 +135,89 @@ function displayResults(responseJson) {
 }
 
 function handleFilters(responseJson) {
-     $('.filterOptionShowers').on('click', event => {
-         console.log('`handleFiltersChecked` ran');
-         if (event.target.checked) {
-            let filterDataClone = APIdata;
-            let filteredData = APIdata.data.filter((obj) => {
+    $('.filterOptionShowers').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        if (event.target.checked) {
+            let filterDataClone = JSON.parse(JSON.stringify(APIdata));
+            let filteredData = filterDataClone.data.filter((obj) => {
             return obj.amenities.showers[0] != 'None'
-         })
-         filterDataClone.data = filteredData;
-         displayResults(filterDataClone);
-         } else {
-             displayResults(APIdata);
-         }  
-     })
-
-     $('.filterOptionToilets').on('click', event => {
-        console.log('`handleFiltersChecked` ran');
-        let filterDataClone = APIdata;
-        let filteredData = APIdata.data.filter((obj) => {
-           return obj.amenities.toilets[0] == 'Flush', 'Vault', 'Composting', 'Portable'
         })
         filterDataClone.data = filteredData;
         displayResults(filterDataClone);
-     })
+        } else {
+            displayResults(APIdata);
+        }  
+    })
 
-     $('.filterOptionWater').on('click', event => {
+    $('.filterOptionToilets').on('click', event => {
         console.log('`handleFiltersChecked` ran');
-        let filterDataClone = APIdata;
-        let filteredData = APIdata.data.filter((obj) => {
-           return obj.amenities.potablewater[0] == true
+        if (event.target.checked) {
+            let filterDataClone = JSON.parse(JSON.stringify(APIdata));
+            let filteredData = filterDataClone.data.filter((obj) => {
+            return obj.amenities.toilets[0] == 'Flush', 'Vault', 'Composting', 'Portable'
         })
         filterDataClone.data = filteredData;
         displayResults(filterDataClone);
-     })
+        } else {
+            displayResults(APIdata);
+        }  
+    })
 
-     $('.filterOptionElectrical').on('click', event => {
+    $('.filterOptionWater').on('click', event => {
         console.log('`handleFiltersChecked` ran');
-        let filterDataClone = APIdata;
-        let filteredData = APIdata.data.filter((obj) => {
-           return obj.campsites.electricalhookups[0] >= 1
+        if (event.target.checked) {
+            let filterDataClone = JSON.parse(JSON.stringify(APIdata));
+            let filteredData = filterDataClone.data.filter((obj) => {
+            return obj.amenities.potablewater[0] != false
         })
         filterDataClone.data = filteredData;
         displayResults(filterDataClone);
-     })
+        } else {
+            displayResults(APIdata);
+        }  
+    })
 
-     $('.filterOptionDump').on('click', event => {
+    $('.filterOptionElectrical').on('click', event => {
         console.log('`handleFiltersChecked` ran');
-        let filterDataClone = APIdata;
-        let filteredData = APIdata.data.filter((obj) => {
-           return obj.amenities.dumpstation[0] == true
+        if (event.target.checked) {
+            let filterDataClone = JSON.parse(JSON.stringify(APIdata));
+            let filteredData = filterDataClone.data.filter((obj) => {
+            return obj.campsites.electricalhookups[0] >= 1
         })
         filterDataClone.data = filteredData;
         displayResults(filterDataClone);
-     })
+        } else {
+            displayResults(APIdata);
+        }
+    })
 
-     $('.filterOptionWiFi').on('click', event => {
+    $('.filterOptionDump').on('click', event => {
         console.log('`handleFiltersChecked` ran');
-        let filterDataClone = APIdata;
-        let filteredData = APIdata.data.filter((obj) => {
-           return obj.amenities.internetconnectivity[0] == true
+        if (event.target.checked) {
+            let filterDataClone = JSON.parse(JSON.stringify(APIdata));
+            let filteredData = filterDataClone.data.filter((obj) => {
+            return obj.amenities.dumpstation[0] == true
         })
         filterDataClone.data = filteredData;
         displayResults(filterDataClone);
-     })
+        } else {
+            displayResults(APIdata);
+        }
+    })
+
+    $('.filterOptionWiFi').on('click', event => {
+        console.log('`handleFiltersChecked` ran');
+        if (event.target.checked) {
+            let filterDataClone = JSON.parse(JSON.stringify(APIdata));
+            let filteredData = filterDataClone.data.filter((obj) => {
+            return obj.amenities.internetconnectivity[0] == true
+        })
+        filterDataClone.data = filteredData;
+        displayResults(filterDataClone);
+        } else {
+            displayResults(APIdata);
+        }
+    })
 }
 
 function getNpsCampgrounds(query) {
@@ -219,7 +238,10 @@ function getNpsCampgrounds(query) {
                 return response.json();
             } throw new Error(response.statusText);
         })
-        .then(responseJson => displayResults(responseJson))
+        .then(responseJson => {
+            APIdata = responseJson
+            displayResults(responseJson)
+        })
         .catch(err => {
             $('#js-error-message').text(`Something went wrong. Please try again later.`);
         });
