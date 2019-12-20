@@ -252,6 +252,7 @@ function watchForm() {
         event.preventDefault();
         const searchTerm = $('#js-search-term').val();
         getNpsCampgrounds(searchTerm);
+        $("input:checkbox").prop('checked', false); 
     });
 }
 
