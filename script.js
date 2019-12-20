@@ -90,7 +90,7 @@ function displayResults(responseJson) {
     $('#results-list').empty();
 
     handleFilters();
-    let APIdata = responseJson;
+    APIdata = responseJson;
 
     if (responseJson.data.length == 0) {
         $('#results-list').append(
@@ -139,9 +139,9 @@ function handleFilters(responseJson) {
      $('.filterOptionShowers').on('click', event => {
          console.log('`handleFiltersChecked` ran');
          let filterDataClone = APIdata;
-         let filteredData= APIdata.data.filter(obj) => {
+         let filteredData = APIdata.data.filter((obj) => {
             return obj.amenities.showers.length
-         }
+         })
          filterDataClone.data = filteredData;
          displayResults(filterDataClone);
      })
