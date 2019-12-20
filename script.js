@@ -138,12 +138,16 @@ function displayResults(responseJson) {
 function handleFilters(responseJson) {
      $('.filterOptionShowers').on('click', event => {
          console.log('`handleFiltersChecked` ran');
-         let filterDataClone = APIdata;
-         let filteredData = APIdata.data.filter((obj) => {
+         if (event.target.checked) {
+            let filterDataClone = APIdata;
+            let filteredData = APIdata.data.filter((obj) => {
             return obj.amenities.showers[0] != 'None'
          })
          filterDataClone.data = filteredData;
          displayResults(filterDataClone);
+         } else {
+             displayResults(APIdata);
+         }  
      })
 
      $('.filterOptionToilets').on('click', event => {
