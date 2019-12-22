@@ -94,7 +94,7 @@ function displayResults(responseJson) {
     if (responseJson.data.length == 0) {
         $('#results-list').append(
             `<h2>Search Results: (${responseJson.data.length})</h2>
-            <p>Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.</p>`);
+            <p class="no-camping">Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.</p>`);
             $('#results').removeClass('hidden');
     };
 
@@ -107,26 +107,26 @@ function displayResults(responseJson) {
             $('#results-list').append(
                 `<li>
                 <h4>${responseJson.data[i].name}</h4>
-                <p>${responseJson.data[i].description}</p>
-                <p>Total sites: ${responseJson.data[i].campsites.totalsites}</p>
-                <p>Group sites: ${responseJson.data[i].campsites.group}</p>
-                <p>Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
-                <p>RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
-                <p>RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
-                <p>RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
-                <p>Toilets: ${responseJson.data[i].amenities.toilets}</p>
-                <p>Showers: ${responseJson.data[i].amenities.showers}</p>
-                <p>Potable water: ${responseJson.data[i].amenities.potablewater}</p>
-                <p>Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
-                <p>Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
-                <p>Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
-                <p>Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
-                <p>Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
-                <p>Directions: ${responseJson.data[i].directionsoverview}</p>
-                <p>Weather: ${responseJson.data[i].weatheroverview}</p>
-                <p>Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
-                <p>Regulations: ${responseJson.data[i].regulationsoverview}</p>
-                <p>For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
+                <p class="result-data-description">${responseJson.data[i].description}</p>
+                <p class="result-data"><i class="fas fa-hashtag"></i> Total sites: ${responseJson.data[i].campsites.totalsites}</p>
+                <p class="result-data"><i class="fas fa-users"></i> Group sites: ${responseJson.data[i].campsites.group}</p>
+                <p class="result-data"><i class="fas fa-campground"></i> Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
+                <p class="result-data"><i class="fas fa-caravan"></i> RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
+                <p class="result-data"><i class="fas fa-info-circle"></i> RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
+                <p class="result-data"><i class="fas fa-ruler"></i> RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
+                <p class="result-data"><i class="fas fa-toilet-paper"></i> Toilets: ${responseJson.data[i].amenities.toilets}</p>
+                <p class="result-data"><i class="fas fa-bath"></i> Showers: ${responseJson.data[i].amenities.showers}</p>
+                <p class="result-data"><i class="fas fa-water"></i> Potable water: ${responseJson.data[i].amenities.potablewater}</p>
+                <p class="result-data"><i class="fab fa-bitbucket"></i> Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
+                <p class="result-data"><i class="fas fa-charging-station"></i> Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
+                <p class="result-data"><i class="fas fa-wifi"></i> Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
+                <p class="result-data"><i class="fas fa-fire"></i> Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
+                <p class="result-data"><i class="fas fa-wheelchair"></i> Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
+                <p class="result-data"><i class="fas fa-route"></i> Directions: ${responseJson.data[i].directionsoverview}</p>
+                <p class="result-data"><i class="fas fa-cloud-sun"></i> Weather: ${responseJson.data[i].weatheroverview}</p>
+                <p class="result-data"><i class="fas fa-plus"></i> Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
+                <p class="result-data"><i class="far fa-stop-circle"></i> Regulations: ${responseJson.data[i].regulationsoverview}</p>
+                <p class="result-data"><i class="fas fa-book-open"></i> For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
                 </li>`
             )};
     

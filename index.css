@@ -1,18 +1,182 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
   }
   
   body {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .searchContainer {
+    height: 50vh;
+    background: url("jack-sloop-qelGaL2OLyE-unsplash.jpg") 50%;
+    background-size: cover;
+  }
+
+  h1 {
     font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 36px;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  .intro {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight:100;
+    font-size: 20px;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  #js-park-form {
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: hsla(0,0%,100%,.3);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #js-search-term {
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 16px;
+    width: 55%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .search-button {
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 12px;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #2E6B9F;
+    color: white;
+    cursor: pointer;
+  }
+
+  .outdoor-icons {
+    text-align: center;
+    margin-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #results-list {
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    word-wrap: break-word;
+  }
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 28px;
+    word-wrap: break-word;
+    padding-right: 50px;
+  }
+
+  .no-camping {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    text-align: center;
+    word-wrap: break-word;
+    padding-right: 50px;
+  }
+
+  li {
+    list-style-type: none;
+}
+  
+  .error-message {
+      color: red;
   }
   
+  .hidden {
+    display: none;
+  }
+
+  .filter-header {
+      word-wrap: break-word;
+      font-family: 'Yantramanav', sans-serif;
+      text-align: center;
+      font-size: 18px;
+  }
+
+  .filter-list {
+    word-wrap: break-word;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 16px;
+  }
+
+  .input-checkbox {
+    float: right;
+    margin-right: 50px;
+  }
+
+  h4 {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    word-wrap: break-word;
+    padding-right: 50px;
+    color: #2E6B9F;
+  }
+
+  .result-data-description {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    word-wrap: break-word;
+    margin-right: 50px;
+    text-align: center;
+  }
+
+  .result-data {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    word-wrap: break-word;
+    margin-right: 50px;
+    text-align: left;
+  }
+
+  footer {
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 12px;
+    color: white;
+    background-color: #2E6B9F;
+    text-align: center;
+    clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  footer a {
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+  }
+
   .spinner {
     width: 40px;
     height: 40px;
-    background-color: #00aced;
-    position: absolute;
-    top: 48%;
-    left: 48%;
+    background-color: #2E6B9F;
+    margin: 100px auto;
     -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
     animation: sk-rotateplane 1.2s infinite ease-in-out;
   }
@@ -36,29 +200,242 @@
     }
   }
 
-  .spinner-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: white;
-    z-index: 999999;
+  @media screen and (min-width: 480px) {
+    .searchContainer {
+      padding-top: 100px;
     }
 
-li {
-    list-style-type: none;
-}
+    #js-park-form {
+      display: inline-block;
+      margin-left: 50px;
+      background-color: hsla(0,0%,100%,.3);
+    }
+
+    #js-search-term {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 16px;
+      width: 50%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+      height: 50px;
+    }
   
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
+    .search-button {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 300px;
+      height: 50px;
+      background-color: #2E6B9F;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .filter-list {
+      word-wrap: break-word;
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 16px;
+      margin-left: 75px;
+    }
   
-  .error-message {
-      color: red;
+    .input-checkbox {
+      float: right;
+      margin-right: 120px;
+    }
+
   }
+
+  @media screen and (min-width: 1024px) {
+    h1 {
+      font-size: 52px;
+    }
+    
+    .searchContainer {
+      padding-top: 200px;
+    }
+
+    #js-park-form {
+      display: inline-block;
+      margin-left: 200px;
+      background-color: hsla(0,0%,100%,.3);
+    }
+
+    #js-search-term {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 16px;
+      width: 50%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+      height: 50px;
+    }
   
-  .hidden {
-    display: none;
+    .search-button {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 300px;
+      height: 50px;
+      background-color: #2E6B9F;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .filter-list {
+      word-wrap: break-word;
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 16px;
+      margin-left: 150px;
+    }
+  
+    .input-checkbox {
+      float: right;
+      margin-right: 200px;
+    }
+
   }
+
+  @media screen and (min-width: 1280px) {
+    .searchContainer {
+      padding-bottom: 400px;
+    }
+    
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+      font-size: 42px;
+      text-align: center;
+      word-wrap: break-word;
+    }
+  
+    .intro {
+      font-family: 'Yantramanav', sans-serif;
+      font-weight: 100;
+      font-size: 28px;
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    #js-park-form {
+      display: inline-block;
+      margin-left: 400px;
+      background-color: hsla(0,0%,100%,.3);
+    }
+
+    #js-search-term {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 16px;
+      width: 55%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+      height: 50px;
+    }
+  
+    .search-button {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 300px;
+      height: 50px;
+      background-color: #2E6B9F;
+      color: white;
+      cursor: pointer;
+    }
+
+    .filter-header {
+      font-size: 20px;
+    }
+    
+    .filter-list {
+      word-wrap: break-word;
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 18px;
+      margin-left: 350px;
+    }
+  
+    .input-checkbox {
+      margin-right: 400px;
+    }
+
+    .result-data {
+      text-align: center;
+    }
+
+  }
+
+  @media screen and (min-width: 1800px) {
+    .searchContainer {
+      padding-bottom: 500px
+    }
+    
+    h1 {
+      font-size: 48px;
+    }
+    
+    #js-park-form {
+      display: inline-block;
+      margin-left: 625px;
+      background-color: hsla(0,0%,100%,.3);
+    }
+
+    #js-search-term {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 16px;
+      width: 55%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+      height: 50px;
+    }
+  
+    .search-button {
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 300px;
+      height: 50px;
+      background-color: #2E6B9F;
+      color: white;
+      cursor: pointer;
+    }
+
+    .outdoor-icons {
+      text-align: center;
+      margin-top: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .filter-list {
+      word-wrap: break-word;
+      font-family: 'Yantramanav', sans-serif;
+      font-size: 18px;
+      margin-left: 650px;
+      margin-right: 300px;
+    }
+  }
+ 
+
+
+
+  
+  
+  
