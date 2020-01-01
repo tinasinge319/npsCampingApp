@@ -9,11 +9,13 @@
         <link href="index.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Heebo:100,300%7COpen+Sans:100,300%7CRoboto:100,300%7CYantramanav:100,300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">    </head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">    
+    </head>
     <body>
         <div class="spinner-wrapper">
              <div class="spinner"></div>
         </div>
+        <header>
             <section class="searchContainer">
                 <h1>Sleep with nature.</h1>
                 <p class="intro">Find the perfect campground in the National Park you have always dreamed of.</p>
@@ -26,58 +28,63 @@
                     </form>
                 </div>
             </section>
+        </header>
+        <main>
             <section class="outdoor-icons">
                 <i class="fas fa-campground fa-5x"></i>
                 <i class="fas fa-tree fa-5x"></i>
                 <i class="fas fa-mountain fa-5x"></i>
             </section>
-        <section id ="error">
+            <section id ="error">
                 <p id="js-error-message" class="error-message"></p>
-        </section>
-        <section id="filters" class="hidden">
-            <p class="filter-header">Filter Results:</p>
-            <ul>
-                <li class="filter-list">
-                    <label class="filterOptionShowers">Showers
-                        <input type="checkbox" class="input-checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="filter-list">
-                    <label class="filterOptionToilets">Toilets
-                        <input type="checkbox" class="input-checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="filter-list">
-                    <label class="filterOptionWater">Potable Water
-                        <input type="checkbox" class="input-checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="filter-list">
-                    <label class="filterOptionElectrical">Electrical Hookups
-                        <input type="checkbox" class="input-checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="filter-list">
-                    <label class="filterOptionDump">Dump Station
-                        <input type="checkbox" class="input-checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-                <li class="filter-list">
-                    <label class="filterOptionWiFi">WiFi
-                        <input type="checkbox" class="input-checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </li>
-            </ul>
-        </section>
-        <section id="results" class="hidden">
-            <ul id="results-list"></ul>
-        </section>
+            </section>
+            <section id="resultsCount" class="hidden">
+            </section>
+            <section id="filters" class="hidden">
+                <p class="filter-header">Filter Results:</p>
+                <ul id="filterList">
+                    <li class="filter-list">
+                        <label class="filterOptionShowers">Showers
+                            <input type="checkbox" id="showers" class="input-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li class="filter-list">
+                        <label class="filterOptionToilets">Toilets
+                            <input type="checkbox" id="toilets" class="input-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li class="filter-list">
+                        <label class="filterOptionWater">Potable Water
+                            <input type="checkbox" id="water" class="input-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li class="filter-list">
+                        <label class="filterOptionElectrical">Electrical Hookups
+                            <input type="checkbox" id="electrical" class="input-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li class="filter-list">
+                        <label class="filterOptionDump">Dump Station
+                            <input type="checkbox" id="dump" class="input-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li class="filter-list">
+                        <label class="filterOptionWiFi">WiFi
+                            <input type="checkbox" id="internet" class="input-checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                </ul>
+            </section>
+            <section id="results" class="hidden">
+                <ul id="results-list"></ul>
+            </section>
+        </main>
         <footer>
             <p>Created by <a href="https://www.linkedin.com/in/tinasinge/" target="_blank">Tina Singe</a></p>
         </footer>
