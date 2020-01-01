@@ -173,7 +173,6 @@ function handleFilters() {
                 break;
         }
         return check;
-        // to do: fix toilets -- look at regular expressions
     })
     //console.log(filteredData);
     
