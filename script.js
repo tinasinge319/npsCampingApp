@@ -95,7 +95,7 @@ function displayResults(responseJson) {
     if (responseJson.data.length == 0) {
         $('#resultsCount').append(
             `<h2>Search Results: (${responseJson.data.length})</h2>
-            <p class="no-camping">Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.</p>`);
+            <p class="no-camping">Sorry! There are no campgrounds listed for that selection at this time. Please choose a different park.</p>`);
             $('#resultsCount').removeClass('hidden');
     };
 
@@ -108,28 +108,28 @@ function displayResults(responseJson) {
         for (let i = 0; i < responseJson.data.length; i++) {
             $('#results-list').append(
                 `<li>
-                <h4>${responseJson.data[i].name}</h4>
-                <p class="result-data-description">${responseJson.data[i].description}</p>
-                <p class="result-data"><i class="fas fa-hashtag"></i> Total sites: ${responseJson.data[i].campsites.totalsites}</p>
-                <p class="result-data"><i class="fas fa-users"></i> Group sites: ${responseJson.data[i].campsites.group}</p>
-                <p class="result-data"><i class="fas fa-campground"></i> Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
-                <p class="result-data"><i class="fas fa-caravan"></i> RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
-                <p class="result-data"><i class="fas fa-info-circle"></i> RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
-                <p class="result-data"><i class="fas fa-ruler"></i> RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
-                <p class="result-data"><i class="fas fa-toilet-paper"></i> Toilets: ${responseJson.data[i].amenities.toilets}</p>
-                <p class="result-data"><i class="fas fa-bath"></i> Showers: ${responseJson.data[i].amenities.showers}</p>
-                <p class="result-data"><i class="fas fa-water"></i> Potable water: ${responseJson.data[i].amenities.potablewater}</p>
-                <p class="result-data"><i class="fab fa-bitbucket"></i> Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
-                <p class="result-data"><i class="fas fa-charging-station"></i> Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
-                <p class="result-data"><i class="fas fa-wifi"></i> Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
-                <p class="result-data"><i class="fas fa-fire"></i> Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
-                <p class="result-data"><i class="fas fa-wheelchair"></i> Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
-                <p class="result-data"><i class="fas fa-route"></i> Directions: ${responseJson.data[i].directionsoverview}</p>
-                <p class="result-data"><i class="fas fa-cloud-sun"></i> Weather: ${responseJson.data[i].weatheroverview}</p>
-                <p class="result-data"><i class="fas fa-plus"></i> Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
-                <p class="result-data"><i class="far fa-stop-circle"></i> Regulations: ${responseJson.data[i].regulationsoverview}</p>
-                <p class="result-data"><i class="fas fa-book-open"></i> For reservation info, please visit <a href="https://www.recreation.gov/" target="_blank">recreation.gov.</a>
-                </li>`
+                <h4>${responseJson.data[i].name}</h4>
+                <p class="result-data-description">${responseJson.data[i].description}</p>
+                <p class="result-data"><img src="https://img.icons8.com/metro/26/000000/hashtag.png" class="icons"> Total sites: ${responseJson.data[i].campsites.totalsites}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material-sharp/24/000000/conference-call.png" class="icons"> Group sites: ${responseJson.data[i].campsites.group}</p>
+                <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/30/000000/camping-tent.png" class="icons"> Tent-only sites: ${responseJson.data[i].campsites.tentonly}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material-rounded/24/000000/rv-campground.png" class="icons"> RV-only sites: ${responseJson.data[i].campsites.rvonly}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material-rounded/24/000000/info.png" class="icons"> RV info: ${responseJson.data[i].accessibility.rvinfo}</p>
+                <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/30/000000/ruler.png" class="icons"> RV max-length: ${responseJson.data[i].accessibility.rvmaxlength}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material-sharp/24/000000/toilet-paper.png" class="icons"> Toilets: ${responseJson.data[i].amenities.toilets}</p>
+                <p class="result-data"><img src="https://img.icons8.com/android/24/000000/shower.png" class="icons"> Showers: ${responseJson.data[i].amenities.showers}</p>
+                <p class="result-data"><img src="https://img.icons8.com/android/24/000000/water.png" class="icons"> Potable water: ${responseJson.data[i].amenities.potablewater}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material/24/000000/bitbucket.png" class="icons"> Dump station: ${responseJson.data[i].amenities.dumpstation}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material-sharp/24/000000/electrical.png" class="icons"> Electrical hookups: ${responseJson.data[i].campsites.electricalhookups}</p>
+                <p class="result-data"><img src="https://img.icons8.com/android/24/000000/wifi.png" class="icons"> Wifi: ${responseJson.data[i].amenities.internetconnectivity}</p>
+                <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/30/000000/bonfire.png" class="icons"> Firewood for sale: ${responseJson.data[i].amenities.firewoodforsale}</p>
+                <p class="result-data"><img src="https://img.icons8.com/android/24/000000/wheelchair.png" class="icons"> Wheelchair accessability: ${responseJson.data[i].accessibility.wheelchairaccess}</p>
+                <p class="result-data"><img src="https://img.icons8.com/material-sharp/24/000000/track-order.png" class="icons"> Directions: ${responseJson.data[i].directionsoverview}</p>
+                <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/30/000000/sun.png" class="icons"> Weather: ${responseJson.data[i].weatheroverview}</p>
+                <p class="result-data"><img src="https://img.icons8.com/metro/26/000000/plus-math.png" class="icons"> Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
+                <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/26/000000/stop-circled.png" class="icons"> Regulations: ${responseJson.data[i].regulationsoverview}</p>
+                <p class="result-data"><img src="https://img.icons8.com/metro/26/000000/literature.png" class="icons"> For reservation info, please visit <a href="https://www.recreation.gov">recreation.gov.</a>
+                </li>`
             )};
     
             $('#results').removeClass('hidden');
@@ -173,7 +173,7 @@ function handleFilters() {
                 break;
         }
         return check;
-    })
+    }) 
     //console.log(filteredData);
     
 });

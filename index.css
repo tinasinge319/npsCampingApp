@@ -73,10 +73,15 @@
   }
 
   #resultsCount {
+    font-family: 'Yantramanav', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    word-wrap: break-word;
   }
 
   #results-list {
@@ -84,9 +89,19 @@
     font-size: 18px;
     font-weight: 100;
     text-align: center;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     word-wrap: break-word;
+    padding: 0;
+  }
+
+  .result-data {
+    text-align: center;
+    padding: 0;
+  }
+
+  .icons {
+    vertical-align: bottom;
   }
 
   h2 {
@@ -95,19 +110,13 @@
     font-size: 28px;
     word-wrap: break-word;
     padding-right: 50px;
-  }
+    margin-left: 50px;
 
-  .no-camping {
-    font-family: 'Yantramanav', sans-serif;
-    font-weight: 100;
-    font-size: 20px;
-    text-align: center;
-    word-wrap: break-word;
-    padding-right: 50px;
   }
 
   li {
     list-style-type: none;
+    
 }
   
   .error-message {
@@ -141,7 +150,6 @@
     font-weight: 300;
     font-size: 24px;
     word-wrap: break-word;
-    padding-right: 50px;
     color: #2E6B9F;
   }
 
