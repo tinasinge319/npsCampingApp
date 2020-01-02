@@ -9,6 +9,9 @@ Link to live app: https://tinasinge319.github.io/npsCampingApp/
 Landing Page:
 ![landing page](screenshots/LandingPage.png)
 
+Drop-down Menu:
+![dropDownMenu](screenshots/dropDownMenu.png)
+
 Filters:
 ![filters](screenshots/filters.png)
 
