@@ -128,7 +128,6 @@ function displayResults(responseJson) {
                 <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/30/000000/sun.png" class="icons"> Weather: ${responseJson.data[i].weatheroverview}</p>
                 <p class="result-data"><img src="https://img.icons8.com/metro/26/000000/plus-math.png" class="icons"> Additional info: ${responseJson.data[i].accessibility.additionalinfo}</p>
                 <p class="result-data"><img src="https://img.icons8.com/ios-glyphs/26/000000/stop-circled.png" class="icons"> Regulations: ${responseJson.data[i].regulationsoverview}</p>
-                <p class="result-data"><img src="https://img.icons8.com/metro/26/000000/literature.png" class="icons"> For reservation info, please visit <a href="https://www.recreation.gov">recreation.gov.</a>
                 </li>`
             )};
     
